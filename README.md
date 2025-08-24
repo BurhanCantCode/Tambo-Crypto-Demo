@@ -23,6 +23,19 @@ Think of it like giving your AI superpowers - instead of just chatting, it can a
 - Users ask: "What's Bitcoin's price?"
 - AI calls the tool, gets data, shows component
 
+### 🎯 The Secret: Simple, Clear Descriptions
+
+The **most important part** of Tambo AI is writing clear descriptions for your tools and components. The AI uses these descriptions to decide when to use each tool or component.
+
+**✅ Good descriptions:**
+- `"Use this for ANY crypto-related query"`
+- `"Beautiful crypto price card"`
+
+**❌ Bad descriptions:**
+- Long, verbose explanations
+- Too many keywords
+- Unclear when to use it
+
 ## 🎯 What You'll Build
 
 - **Smart AI Chat** that understands crypto queries
@@ -305,15 +318,11 @@ import { getCurrentCryptoInfo } from "@/services/crypto-data";
 
 /**
  * 🛠️ TOOLS - Functions your AI can call
- * 
- * Think of tools as superpowers you give to your AI.
- * When users ask for crypto prices, the AI will automatically
- * call the getCryptoPrice tool to fetch real data.
  */
 export const tools: TamboTool[] = [
   {
     name: "getCryptoPrice",
-    description: "Fetches current cryptocurrency price and information for any valid crypto symbol (e.g., BTC, ETH, ADA, SOL). Use this when users ask for crypto prices or market data.",
+    description: "Use this for ANY crypto-related query. Gets price data for any cryptocurrency (BTC, ETH, etc.) and displays it in a beautiful card.",
     tool: async (args: { symbol: string }) => {
       try {
         const { symbol } = args;
@@ -322,15 +331,12 @@ export const tools: TamboTool[] = [
           throw new Error('Invalid symbol provided');
         }
         
-        console.log('Fetching crypto price for:', symbol);
-        
         const cryptoInfo = await getCurrentCryptoInfo(symbol);
         
         if (!cryptoInfo) {
           throw new Error('Failed to get current crypto information');
         }
         
-        // Return data formatted for CryptoCard component
         return {
           symbol: cryptoInfo.symbol || symbol.toUpperCase(),
           name: cryptoInfo.name || symbol.toUpperCase(),
@@ -358,15 +364,11 @@ export const tools: TamboTool[] = [
 
 /**
  * 🎨 COMPONENTS - UI elements your AI can display
- * 
- * Components are the visual pieces your AI can show to users.
- * When the AI gets crypto data, it will automatically display
- * it using the beautiful CryptoCard component.
  */
 export const components: TamboComponent[] = [
   {
     name: "CryptoCard",
-    description: "A beautiful cryptocurrency information card that displays current price, 24h change, market cap, and trading volume with color-coded price movements.",
+    description: "Beautiful crypto price card with current price, changes, market cap, and volume.",
     component: CryptoCard,
     propsSchema: cryptoCardSchema,
   },
@@ -457,6 +459,42 @@ Visit `http://localhost:3000/chat` and try these commands:
 - Check browser console for errors
 - Verify the crypto symbol is valid (BTC, ETH, etc.)
 - Make sure TamboProvider wraps your chat component
+
+## 💡 Pro Tips for Better AI Behavior
+
+### 🎯 Writing Good Descriptions is Everything!
+
+The **#1 thing** that determines whether your Tambo AI works well is the descriptions you write for tools and components.
+
+**The AI reads these descriptions to decide what to use when.**
+
+#### ✅ What Works:
+```typescript
+// GOOD: Clear, direct, obvious
+description: "Use this for ANY crypto-related query"
+
+// GOOD: Simple and specific  
+description: "Beautiful crypto price card"
+```
+
+#### ❌ What Doesn't Work:
+```typescript
+// BAD: Too verbose, AI gets confused
+description: "A comprehensive cryptocurrency information display component that renders professional-grade financial data visualization cards with real-time market statistics including current pricing, percentage-based change calculations, market capitalization metrics, and 24-hour trading volume analysis with dynamic color-coding for positive and negative price movements"
+
+// BAD: Unclear when to use it
+description: "Shows data in a card format with styling"
+```
+
+### 🧠 How the AI Thinks:
+
+1. **User says**: "Show me Bitcoin"
+2. **AI scans**: All tool descriptions 
+3. **AI finds**: "Use this for ANY crypto-related query"
+4. **AI chooses**: getCryptoPrice tool
+5. **Result**: Beautiful crypto card! ✨
+
+**Keep it simple, the AI will thank you!**
 
 ## 🎯 Congratulations!
 

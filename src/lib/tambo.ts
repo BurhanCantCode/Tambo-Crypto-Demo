@@ -32,7 +32,7 @@ export const tools: TamboTool[] = [
   {
     name: "getCryptoPrice",
     description:
-      "Fetches current cryptocurrency price and information for any valid crypto symbol (e.g., BTC, ETH, ADA, SOL). Displays it as a professional card with price, 24h change, market cap, and volume. Use this when users ask for crypto prices or current market data.",
+      "Use this for ANY crypto-related query. Gets price data for any cryptocurrency (BTC, ETH, etc.) and displays it in a beautiful card.",
     tool: async (args: { symbol: string }) => {
       try {
         const { symbol } = args;
@@ -131,7 +131,7 @@ export const components: TamboComponent[] = [
   {
     name: "CryptoCard",
     description:
-      "A professional cryptocurrency information card that displays current price, 24h change, market cap, and trading volume with beautiful styling and color-coded price movements.",
+      "Beautiful crypto price card with current price, changes, market cap, and volume.",
     component: CryptoCard,
     propsSchema: cryptoCardSchema,
   },

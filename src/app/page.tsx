@@ -1,57 +1,92 @@
 import { ApiKeyCheck } from "@/components/ApiKeyCheck";
 import Image from "next/image";
 
-const CryptoFeaturesSection = () => (
-  <div className="bg-gradient-to-br from-slate-50 to-blue-50 px-8 py-6 rounded-lg border">
-    <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-      <span>🚀</span>
-      What You Can Do:
-    </h2>
-    <ul className="space-y-4 text-gray-700">
-      <li className="flex items-start gap-3">
-        <span className="text-2xl">📈</span>
-        <div>
-          <div className="font-medium">Interactive Price Charts</div>
-          <div className="text-sm text-gray-600">Ask for any cryptocurrency chart with natural language</div>
-        </div>
+const KeyFilesSection = () => (
+  <div className="bg-white px-8 py-4">
+    <h2 className="text-xl font-semibold mb-4">How it works:</h2>
+    <ul className="space-y-4 text-gray-600">
+      <li className="flex items-start gap-2">
+        <span>📄</span>
+        <span>
+          <code className="font-medium">src/app/layout.tsx</code> - Main layout
+          with TamboProvider
+        </span>
       </li>
-      <li className="flex items-start gap-3">
-        <span className="text-2xl">💰</span>
-        <div>
-          <div className="font-medium">Real-time Price Data</div>
-          <div className="text-sm text-gray-600">Get current prices and 24h changes for any crypto</div>
-        </div>
+      <li className="flex items-start gap-2">
+        <span>📄</span>
+        <span>
+          <code className="font-medium font-mono">src/app/chat/page.tsx</code> -
+          Chat page with TamboProvider and MCP integration
+        </span>
       </li>
-      <li className="flex items-start gap-3">
-        <span className="text-2xl">🔍</span>
-        <div>
-          <div className="font-medium">Smart Search</div>
-          <div className="text-sm text-gray-600">Search cryptocurrencies by name or symbol</div>
-        </div>
+      <li className="flex items-start gap-2">
+        <span>📄</span>
+        <span>
+          <code className="font-medium font-mono">
+            src/app/interactables/page.tsx
+          </code>{" "}
+          - Interactive demo page with tools and components
+        </span>
       </li>
-      <li className="flex items-start gap-3">
-        <span className="text-2xl">⏱️</span>
-        <div>
-          <div className="font-medium">Multiple Timeframes</div>
-          <div className="text-sm text-gray-600">View charts for 7 days, 30 days, 90 days, or 1 year</div>
-        </div>
+      <li className="flex items-start gap-2">
+        <span>📄</span>
+        <span>
+          <code className="font-medium font-mono">
+            src/components/tambo/message-thread-full.tsx
+          </code>{" "}
+          - Chat UI
+        </span>
+      </li>
+      <li className="flex items-start gap-2">
+        <span>📄</span>
+        <span>
+          <code className="font-medium font-mono">
+            src/components/tambo/graph.tsx
+          </code>{" "}
+          - A generative graph component
+        </span>
+      </li>
+      <li className="flex items-start gap-2">
+        <span>📄</span>
+        <span>
+          <code className="font-medium font-mono">
+            src/services/population-stats.ts
+          </code>{" "}
+          - Example tool implementation with mock population data
+        </span>
+      </li>
+      <li className="flex items-start gap-2">
+        <span className="text-blue-500">📄</span>
+        <span>
+          <code className="font-medium font-mono">src/lib/tambo.ts</code> -
+          Component and tool registration
+        </span>
+      </li>
+      <li className="flex items-start gap-2">
+        <span className="text-blue-500">📄</span>
+        <span>
+          <code className="font-medium font-mono">README.md</code> - For more
+          details check out the README
+        </span>
       </li>
     </ul>
-    
-    <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-      <h3 className="font-medium text-blue-900 mb-2">Try these examples:</h3>
-      <ul className="text-sm text-blue-800 space-y-1">
-        <li>• "Give me a BTC chart for the last month"</li>
-        <li>• "Show me Ethereum price for the last 7 days"</li>
-        <li>• "What's the current price of Solana?"</li>
-        <li>• "Compare Bitcoin and Ethereum charts"</li>
-      </ul>
-      <div className="mt-3 p-2 bg-amber-50 rounded border-l-2 border-amber-400">
-        <p className="text-xs text-amber-800">
-          <strong>Note:</strong> Charts use realistic demo data based on current prices. 
-          Historical data requires CoinMarketCap Professional+ plan.
-        </p>
-      </div>
+    <div className="flex gap-4 flex-wrap mt-4">
+      <a
+        href="https://docs.tambo.co"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-6 py-3 rounded-md font-medium transition-colors text-lg mt-4 border border-gray-300 hover:bg-gray-50"
+      >
+        View Docs
+      </a>
+      <a
+        href="https://tambo.co/dashboard"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-6 py-3 rounded-md font-medium transition-colors text-lg mt-4 border border-gray-300 hover:bg-gray-50"
+      >
+        Dashboard
+      </a>
     </div>
   </div>
 );
@@ -61,13 +96,16 @@ export default function Home() {
     <div className="min-h-screen p-8 flex flex-col items-center justify-center font-[family-name:var(--font-geist-sans)]">
       <main className="max-w-2xl w-full space-y-8">
         <div className="flex flex-col items-center">
-          <div className="text-6xl mb-4">₿</div>
-          <h1 className="text-4xl text-center font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Crypto Price Checker
-          </h1>
-          <p className="text-lg text-gray-600 mt-2 text-center">
-            AI-powered cryptocurrency charts and price data
-          </p>
+          <a href="https://tambo.co" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/Octo-Icon.svg"
+              alt="Tambo AI Logo"
+              width={80}
+              height={80}
+              className="mb-4"
+            />
+          </a>
+          <h1 className="text-4xl text-center">tambo-ai chat template</h1>
         </div>
 
         <div className="w-full space-y-8">
@@ -77,21 +115,21 @@ export default function Home() {
               <div className="flex gap-4 flex-wrap">
                 <a
                   href="/chat"
-                  className="px-6 py-3 rounded-md font-medium shadow-sm transition-colors text-lg mt-4 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
+                  className="px-6 py-3 rounded-md font-medium shadow-sm transition-colors text-lg mt-4 bg-[#7FFFC3] hover:bg-[#72e6b0] text-gray-800"
                 >
-                  Start Trading Chat 🚀
+                  Go to Chat →
                 </a>
                 <a
                   href="/interactables"
-                  className="px-6 py-3 rounded-md font-medium shadow-sm transition-colors text-lg mt-4 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white"
+                  className="px-6 py-3 rounded-md font-medium shadow-sm transition-colors text-lg mt-4 bg-[#FFE17F] hover:bg-[#f5d570] text-gray-800"
                 >
-                  Demo & Examples 📊
+                  Interactables Demo →
                 </a>
               </div>
             </ApiKeyCheck>
           </div>
 
-          <CryptoFeaturesSection />
+          <KeyFilesSection />
         </div>
       </main>
     </div>
