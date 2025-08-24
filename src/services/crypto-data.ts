@@ -56,32 +56,4 @@ export async function getCurrentCryptoInfo(symbol: string): Promise<CryptoInfo> 
   }
 }
 
-/**
- * Gets top cryptocurrencies from CoinMarketCap listings
- * @returns Array of top cryptocurrencies with current data
- */
-export async function getTopCryptocurrencies() {
-  const response = await fetch('/api/crypto/listings');
-  
-  if (!response.ok) {
-    throw new Error(`API error: ${response.status}`);
-  }
-  
-  const data = await response.json();
-  
-  if (data.error) {
-    throw new Error(data.error);
-  }
-  
-  return data.data.slice(0, 10).map((crypto: any) => ({
-    symbol: crypto.symbol,
-    name: crypto.name,
-    current_price: crypto.quote.USD.price,
-    price_change_24h: crypto.quote.USD.price_change_24h,
-    price_change_percentage_24h: crypto.quote.USD.percent_change_24h,
-    market_cap: crypto.quote.USD.market_cap,
-    volume_24h: crypto.quote.USD.volume_24h,
-  }));
-}
-
 
