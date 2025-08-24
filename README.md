@@ -44,7 +44,7 @@ npm install
 Create `.env.local`:
 ```env
 NEXT_PUBLIC_TAMBO_API_KEY=your-tambo-api-key-here
-COINMARKETCAP_API_KEY=your-coinmarketcap-api-key-here
+NEXT_PUBLIC_COINMARKETCAP_API_KEY=your-coinmarketcap-api-key-here
 ```
 
 ## 💾 Step 3: Create API Routes
